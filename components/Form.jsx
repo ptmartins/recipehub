@@ -4,12 +4,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
     <section className='w-full max-w-full flex-start flex-col'>
       <h1 className='head_text text-left'>
-        <span className='blue_gradient'>{type} Recipe</span>
+        <span>{type} Recipe</span>
       </h1>
-      {/* <p className='desc text-left max-w-md'>
-        {type} and share amazing prompts with the world, and let your
-        imagination run wild with any AI-powered platform
-      </p> */}
 
       <form
         onSubmit={handleSubmit}
@@ -17,13 +13,27 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       >
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
-            Your AI Prompt
+            Title
+          </span>
+
+          <input
+            value={post.title}
+            onChange={(e) => setPost({ ...post, title: e.target.value })}
+            placeholder='Recipe title'
+            required
+            className='form_input'
+          />
+        </label>    
+
+        <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            Ingredients
           </span>
 
           <textarea
-            value={post.prompt}
-            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
-            placeholder='Write your post here'
+            value={post.ingredients}
+            onChange={(e) => setPost({ ...post, ingredients: e.target.value })}
+            placeholder='Recipe ingredients here'
             required
             className='form_textarea '
           />
@@ -31,9 +41,23 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
 
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
-            Field of Prompt{" "}
+            Preparation
+          </span>
+
+          <textarea
+            value={post.prompt}
+            onChange={(e) => setPost({ ...post, preparation: e.target.value })}
+            placeholder='Recipe instructions here'
+            required
+            className='form_textarea '
+          />
+        </label>
+
+        <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            Recipe tags{" "}
             <span className='font-normal'>
-              (#product, #webdevelopment, #idea, etc.)
+              (#vegetarian, #healthy, #pasta, #fish, etc.)
             </span>
           </span>
           <input
